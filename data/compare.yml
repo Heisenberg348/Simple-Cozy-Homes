@@ -1,0 +1,25 @@
+# The comparison table on the homepage. Add a row by copying one block.
+
+head:
+- If this is you
+- Start with
+- Why
+rows:
+- you: You rent and can’t drill holes
+  start: Wall decor and lighting
+  why: Both change a room the most for the least damage. Nothing here needs a landlord’s permission.
+- you: Your kitchen has no counter space
+  start: Storage and organization
+  why: Going upward and under the sink buys back more room than replacing your appliances.
+- you: The room has one harsh ceiling light
+  start: Lighting
+  why: Two low lamps beat one bright overhead every time, and it costs less than new furniture.
+- you: You want a quick visual change
+  start: Pillow covers and textiles
+  why: Swapping covers changes the color and texture of a room without replacing the furniture.
+- you: You just moved in
+  start: Kitchen essentials
+  why: Get the few tools you’ll use daily first. Decor is easier to judge after a month in the place.
+- you: Cleaning eats your weekend
+  start: Cleaning and laundry
+  why: 'A small kit kept in the room you use it in removes the part people hate: the fetching.'

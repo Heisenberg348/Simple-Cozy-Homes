@@ -1,0 +1,11 @@
+# The green band under the categories on the homepage.
+
+items:
+- num: '6'
+  label: Home collections
+- num: Small-space
+  label: Friendly choices
+- num: Everyday
+  label: Useful design
+- num: Direct
+  label: Customer support

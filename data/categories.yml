@@ -1,0 +1,39 @@
+# The room and routine cards on the homepage.
+
+items:
+- title: Kitchen Essentials
+  text: Tools that earn their drawer space. Prep, cook, store, repeat.
+  image: images/gemini-generated-image-jb3nvwjb3nvwjb3n.jpg
+  alt: Kitchen tools laid out on a counter
+  url: '#picks'
+  linkLabel: See picks →
+- title: Storage & Organization
+  text: Bins, racks and dividers that turn chaos into a system you’ll keep.
+  image: images/gemini-generated-image-56ukn356ukn356uk.jpg
+  alt: Baskets and jars on open shelving
+  url: '#picks'
+  linkLabel: See picks →
+- title: Home Decor & Wall Art
+  text: Warmth without clutter. Pieces that finish a room instead of filling it.
+  image: images/gemini-generated-image-dk6kyfdk6kyfdk6k.jpg
+  alt: Framed art above a styled console
+  url: '#picks'
+  linkLabel: See picks →
+- title: Lighting
+  text: Lamps and bulbs that make a space feel calm instead of clinical.
+  image: images/gemini-generated-image-o03h9ro03h9ro03h.jpg
+  alt: Warm table lamp lighting a corner
+  url: '#picks'
+  linkLabel: See picks →
+- title: Cleaning & Laundry
+  text: The unglamorous gear that saves you an hour every week.
+  image: images/gemini-generated-image-tb5d7ktb5d7ktb5d.jpg
+  alt: Folded towels and cleaning supplies
+  url: '#picks'
+  linkLabel: See picks →
+- title: Bedding & Bath
+  text: Soft where it matters. Sheets, towels and small luxuries.
+  image: images/cat-bedding.jpg
+  alt: A made bed with linen bedding
+  url: '#picks'
+  linkLabel: See picks →

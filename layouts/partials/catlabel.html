@@ -1,0 +1,6 @@
+{{- $key := .Params.category -}}
+{{- $label := .Params.badge | default $key -}}
+{{- if not .Params.badge -}}
+{{- range site.Params.blogCategories }}{{ if eq .key $key }}{{ $label = .label }}{{ end }}{{ end -}}
+{{- end -}}
+{{ $label }}

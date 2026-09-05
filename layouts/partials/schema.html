@@ -1,0 +1,53 @@
+{{- if .IsHome -}}
+<!-- Tells Google who publishes this site. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ "#organization" | absURL }}",
+      "name": {{ site.Params.siteName | jsonify }},
+      "url": "{{ site.BaseURL }}",
+      "email": {{ site.Params.email | jsonify }},
+      "description": {{ site.Params.description | jsonify }},
+      "logo": { "@type": "ImageObject", "url": "{{ "favicon.svg" | absURL }}" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ "#website" | absURL }}",
+      "url": "{{ site.BaseURL }}",
+      "name": {{ site.Params.siteName | jsonify }},
+      "inLanguage": "en-US",
+      "publisher": { "@id": "{{ "#organization" | absURL }}" }
+    }
+  ]
+}
+</script>
+{{- else if and .IsPage (eq .Section "blog") -}}
+<!-- Article details for Google. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ .Description | jsonify }},
+  "image": "{{ (.Params.image | default site.Params.defaultImage) | absURL }}",
+  "datePublished": {{ (.Date.Format "2006-01-02") | jsonify }},
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ .Permalink }}" },
+  "author": {
+    "@type": "Organization",
+    "name": {{ site.Params.authorName | jsonify }},
+    "url": "{{ "about.html" | absURL }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.Params.siteName | jsonify }},
+    "url": "{{ site.BaseURL }}",
+    "logo": { "@type": "ImageObject", "url": "{{ "favicon.svg" | absURL }}" }
+  },
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true
+}
+</script>
+{{- end -}}

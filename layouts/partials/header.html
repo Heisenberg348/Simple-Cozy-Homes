@@ -1,0 +1,16 @@
+{{- $page := . -}}
+<header class="site-header">
+<div class="wrap site-header__inner">
+<a class="logo" href="{{ "index.html" | relURL }}">{{ site.Params.siteName }}
+<span>{{ site.Params.tagline }}</span></a>
+<nav aria-label="Main" class="nav">
+{{- range site.Params.nav }}
+{{- $cur := false }}
+{{- if eq .section "home" }}{{ $cur = $page.IsHome }}
+{{- else if eq .section "blog" }}{{ $cur = eq $page.Section "blog" }}
+{{- else }}{{ $cur = eq $page.RelPermalink (.url | relURL) }}{{ end }}
+<a{{ if $cur }} class="is-current"{{ end }} href="{{ .url | relURL }}">{{ .name }}</a>
+{{- end }}
+</nav>
+</div>
+</header>

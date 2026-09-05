@@ -1,0 +1,23 @@
+{{- $isPost := and .IsPage (eq .Section "blog") -}}
+{{- $title := .Params.metaTitle | default (printf "%s | %s" .Title site.Title) -}}
+{{- $desc := .Description | default site.Params.description -}}
+{{- $img := .Params.image | default site.Params.defaultImage -}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<!-- Search engine and social sharing tags. -->
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+<meta property="og:site_name" content="{{ site.Params.siteName }}">
+<meta property="og:type" content="{{ cond $isPost "article" "website" }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:image" content="{{ $img | absURL }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&amp;family=Nunito+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ "assets/css/styles.css" | relURL }}">
+<link rel="stylesheet" href="{{ "assets/css/tweaks.css" | relURL }}">

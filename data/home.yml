@@ -1,0 +1,41 @@
+# All the wording on the homepage, section by section.
+
+hero:
+  title: A More Comfortable Home Starts With the Right Details.
+  text: Shop useful essentials and warm, uncomplicated decor chosen for real rooms, smaller spaces and everyday routines.
+  primary:
+    label: Shop featured products
+    url: '#picks'
+  secondary:
+    label: Why Simply Cozy Homes →
+    url: how-we-test.html
+  image: images/gemini-generated-image-96f4t096f4t096f4.jpg
+  imageAlt: A warm living room with soft lighting and layered textiles
+picks:
+  eyebrow: Featured collection
+  title: Useful Pieces. Easy Upgrades.
+  text: Start with six practical favorites that add storage, comfort or character without making your home feel crowded.
+  link:
+    label: Explore home guides →
+    url: blog.html
+  buttonLabel: Shop now →
+categories:
+  title: Shop By Room Or Routine
+  text: Find practical upgrades for the places and daily tasks that shape your home.
+faq:
+  eyebrow: Shopping help
+  title: Simple answers before you order.
+  text: Quick guidance on products, ordering and support.
+  link:
+    label: Read all questions →
+    url: faq.html
+compare:
+  eyebrow: Find your starting point
+  title: Start With What Your Space Needs Most.
+  text: Choose the room or everyday problem you want to improve first.
+endcta:
+  title: Ready To Make Home Feel Better?
+  text: Browse by room, choose the detail that solves a real problem, and keep the rest simple.
+  link:
+    label: Explore home guides →
+    url: blog.html

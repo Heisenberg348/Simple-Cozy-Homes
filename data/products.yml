@@ -1,0 +1,67 @@
+# Featured products on the homepage.
+#  - Add a product: copy one whole block starting at "- badge:".
+#  - Remove a product: delete its block.
+#  - url: PASTE YOUR PRODUCT LINK HERE (keep the quotes)
+#  - image: put the photo in static/images/ and use images/your-file.jpg
+
+items:
+- badge: Utility · Storage
+  title: Under-Sink Pull-Out Organizer
+  text: Turn hard-to-reach cabinet space into two easy pull-out levels.
+  chips:
+  - Sliding shelves
+  - Under sink
+  - 2 tiers
+  image: images/product-1.jpg
+  alt: Two-tier pull-out organizer in the cupboard under a kitchen sink
+  url: '#'
+- badge: Utility · Kitchen
+  title: Airtight Food Storage Container Set
+  text: Keep pantry staples fresh, visible and neatly stacked.
+  chips:
+  - Airtight lids
+  - Stackable
+  - See-through
+  image: images/product-2.jpg
+  alt: Airtight food storage containers on a pantry shelf
+  url: '#'
+- badge: Utility · Everyday
+  title: Flat-Plug Braided Extension Cord
+  text: Bring power behind sofas, beds and cabinets without a bulky plug.
+  chips:
+  - Flat plug
+  - Braided cord
+  - 6 ft
+  image: images/product-3.jpg
+  alt: Cream braided extension cord with a flat plug beside a side table
+  url: '#'
+- badge: Decor · Living room
+  title: Faux Olive Tree in Woven Basket
+  text: Add natural-looking height and softness to an empty corner.
+  chips:
+  - No watering
+  - Basket included
+  - 6 ft tall
+  image: images/product-4.jpg
+  alt: Faux olive tree in a woven basket in a living room corner
+  url: '#'
+- badge: Decor · Soft decor
+  title: Textured Throw Pillow Cover Set
+  text: Refresh a sofa or bed with texture, warmth and an easy color change.
+  chips:
+  - Set of 2
+  - Hidden zip
+  - Machine wash
+  image: images/product-5.jpg
+  alt: Ivory and terracotta throw pillows on a cream sofa
+  url: '#'
+- badge: Decor · Wall decor
+  title: Arched Wall Mirror
+  text: Open up a hallway or bedroom with a clean, light-reflecting shape.
+  chips:
+  - Metal frame
+  - Full length
+  - Hangs 2 ways
+  image: images/product-6.jpg
+  alt: Arched wall mirror above an oak console table
+  url: '#'

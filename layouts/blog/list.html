@@ -1,0 +1,66 @@
+{{ define "main" }}
+{{- $posts := (where site.RegularPages "Section" "blog").ByWeight -}}
+{{- $blog := site.Data.blog -}}
+<section class="phead">
+<div class="wrap phead__inner">
+<div>
+<p class="eyebrow">{{ $blog.eyebrow }}</p>
+<h1>{{ range $i, $line := $blog.headLines }}<span{{ if eq $i (sub (len $blog.headLines) 1) }} class="grad-text"{{ end }}>{{ $line }}</span>{{ end }}</h1>
+</div>
+<div>
+<p class="phead__lede">{{ $blog.lede }}</p>
+<div class="phead__stats">
+{{- range $blog.stats }}
+<div><strong>{{ if eq (printf "%v" .num) "auto" }}{{ len $posts }}{{ else }}{{ .num }}{{ end }}</strong><small>{{ .label }}</small></div>
+{{- end }}
+</div>
+</div>
+</div>
+</section>
+<!-- Category buttons and search. Both of these actually work.
+     Categories are set in hugo.toml under [[params.blogCategories]] -->
+<section class="filterbar">
+<div class="wrap filterbar__inner">
+<div class="chipnav" id="blog-filters">
+<button class="is-on" data-filter="all" type="button">All Articles</button>
+{{- range site.Params.blogCategories }}
+<button data-filter="{{ .key }}" type="button">{{ .label }}</button>
+{{- end }}
+</div>
+<div class="searchbox">
+<span aria-hidden="true" class="searchbox__icon">🔍</span>
+<input aria-label="Search articles" autocomplete="off" id="blog-search" placeholder="Search articles..." type="search"/>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="wrap">
+<div class="head-row">
+<div>
+<p class="eyebrow">{{ $blog.listEyebrow }}</p>
+<h2 class="grad-text">{{ $blog.listTitle }}</h2>
+</div>
+<p class="phead__lede">{{ $blog.listLede }}</p>
+</div>
+<div class="posts" id="blog-posts">
+{{- range $posts }}
+{{ partial "postcard.html" . }}
+{{- end }}
+</div>
+<p class="no-results" id="blog-empty">{{ $blog.emptyText }}</p>
+</div>
+</section>
+<section class="section section--brown">
+<div class="wrap">
+<div class="section__head section__head--left">
+<h2>{{ $blog.ideasTitle }}</h2>
+<p>{{ $blog.ideasText | safeHTML }}</p>
+</div>
+<ol class="ideas">
+{{- range site.Data.ideas.items }}
+<li>{{ . }}</li>
+{{- end }}
+</ol>
+</div>
+</section>
+{{ end }}

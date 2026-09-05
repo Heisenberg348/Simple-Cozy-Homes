@@ -1,0 +1,15 @@
+# The four small promise boxes on the homepage.
+
+items:
+- icon: ⭐
+  title: Chosen With Purpose
+  text: Every item has a clear use, a considered look or both.
+- icon: 🔍
+  title: Made For Real Life
+  text: Our collection focuses on pieces that fit everyday rooms and routines.
+- icon: 🏷
+  title: Clear Product Details
+  text: See the features that matter before you choose an item.
+- icon: 🔒
+  title: A Calm, Focused Collection
+  text: Fewer, better-matched choices make shopping easier.

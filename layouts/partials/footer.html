@@ -1,0 +1,24 @@
+<footer class="site-footer">
+<div class="wrap">
+<div class="footer-grid">
+<div class="footer-about">
+<span class="logo">{{ site.Params.siteName }}</span>
+<p>{{ site.Params.footerBlurb }}</p>
+</div>
+{{- range site.Params.footerColumns }}
+<div>
+<h4>{{ .title }}</h4>
+<ul>
+{{- range .links }}
+<li><a href="{{ .url | relURL }}">{{ .name }}</a></li>
+{{- end }}
+</ul>
+</div>
+{{- end }}
+</div>
+<div class="footer-legal">
+<p>{{ site.Params.copyrightLine }}</p>
+<p>{{ site.Params.legalNote }}</p>
+</div>
+</div>
+</footer>

@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section class="section">
+<div class="wrap oops">
+<p class="eyebrow">Page not found</p>
+<h1 class="grad-text">That page moved out.</h1>
+<p><strong>The link you followed doesn’t exist on this site.</strong> It was probably renamed, or the address has a typo in it. Try one of these instead:</p>
+<a class="btn" href="{{ "index.html" | relURL }}">Return to the store</a>
+</div>
+</section>
+{{ end }}

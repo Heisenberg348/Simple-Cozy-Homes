@@ -1,0 +1,6 @@
+<div class="pickbox">
+{{ with .Get "eyebrow" }}<p class="eyebrow">{{ . }}</p>{{ end }}
+<h4>{{ .Get "name" }}</h4>
+{{ .Inner | markdownify }}
+<a class="btn" href="{{ .Get "url" | default "#" }}" rel="noopener" target="_blank">{{ .Get "label" | default "View the pick" }}</a>
+</div>

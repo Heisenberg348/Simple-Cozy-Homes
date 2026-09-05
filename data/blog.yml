@@ -1,0 +1,21 @@
+# Wording on the guides page. The article cards build themselves.
+
+eyebrow: Simply Cozy Homes Guides
+headLines:
+- Practical Guides.
+- Better Rooms.
+- Less Guesswork.
+lede: Short, useful guides for choosing, arranging and caring for the things that make a home work better.
+stats:
+- num: auto
+  label: Published guides
+- num: Practical
+  label: Room advice
+- num: Simple
+  label: Product choices
+listEyebrow: Latest guides
+listTitle: Start with the room that bugs you most.
+listLede: Plain advice on choosing home products, keeping them working, and getting more out of the space you already have.
+emptyText: No articles match that yet. Try another word or tap All Articles.
+ideasTitle: More Guides In Progress
+ideasText: Guides we’re working on now. Want one of these sooner? <a href="contact.html">Tell us</a> and we’ll move it up.

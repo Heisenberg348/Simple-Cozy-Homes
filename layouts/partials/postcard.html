@@ -1,0 +1,14 @@
+<article class="post" data-cat="{{ .Params.category }}">
+<a aria-label="Read: {{ .Title }}" class="post__link" href="{{ .RelPermalink }}"></a>
+<div class="post__media">
+<span class="post__badge">{{ partial "catlabel.html" . }}</span>
+<img alt="{{ .Params.imageAlt }}" loading="lazy" src="{{ (.Params.image | default site.Params.defaultImage) | relURL }}"/>
+</div>
+<p class="post__meta">{{ .Date.Format "January 2006" }} · {{ .Params.readTime }}</p>
+<h3>{{ .Title }}</h3>
+<p>{{ .Params.cardBlurb | default .Description }}</p>
+<div class="post__foot">
+<span class="post__by"><span aria-hidden="true" class="post__mark">SC</span><span><strong>{{ site.Params.siteName }}</strong><small>{{ site.Params.authorRole }}</small></span></span>
+<span aria-hidden="true" class="post__go">→</span>
+</div>
+</article>

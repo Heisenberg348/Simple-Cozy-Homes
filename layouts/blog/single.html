@@ -1,0 +1,92 @@
+{{ define "main" }}
+{{- $cur := .RelPermalink -}}
+{{- $others := slice -}}
+{{- range (where site.RegularPages "Section" "blog").ByWeight }}{{ if ne .RelPermalink $cur }}{{ $others = $others | append . }}{{ end }}{{ end -}}
+<div class="view" id="view-post">
+<section class="phead phead--post">
+<div class="wrap phead__inner">
+<div>
+<p class="eyebrow crumb"><a href="{{ "blog.html" | relURL }}">Blog</a> <span aria-hidden="true">/</span> <a href="{{ "blog.html" | relURL }}#{{ .Params.category }}">{{ partial "catlabel.html" . }}</a></p>
+<h1>{{ .Title }}</h1>
+</div>
+<div>
+<p class="phead__lede">{{ .Params.lede }}</p>
+<div class="artmeta">
+<span aria-hidden="true" class="post__mark">SC</span>
+<span>
+<strong><a href="{{ "about.html" | relURL }}" rel="author">{{ site.Params.authorName }} Editorial Team</a></strong>
+<small>{{ site.Params.authorRole }} · {{ .Date.Format "January 2006" }} · {{ .Params.readTime }}</small>
+</span>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="wrap">
+<div class="artimg">
+<img alt="{{ .Params.imageAlt }}" src="{{ .Params.image }}"/>
+</div>
+<div class="artbody">
+<div class="prose prose--article">
+{{ with .Params.intro }}<p class="artlede">{{ . }}</p>{{ end }}
+{{ .Content }}
+</div>
+<aside class="artside">
+{{ with .Fragments.Headings }}
+<div class="artside__box">
+<h4>In this guide</h4>
+<ul class="toc">
+{{- range . }}
+<li><a href="#{{ .ID }}">{{ .Title }}</a></li>
+{{- end }}
+</ul>
+</div>
+{{ end }}
+{{ with .Params.pick }}
+<div class="artside__box">
+<h4>Featured pick</h4>
+<p>{{ .text }}</p>
+<a class="btn" href="{{ .url | default "#" }}" rel="noopener" target="_blank">{{ .label | default "View the pick" }}</a>
+</div>
+{{ end }}
+<div class="artside__box">
+<h4>More reading</h4>
+<ul class="toc">
+<li><a href="{{ "blog.html" | relURL }}">All articles</a></li>
+<li><a href="{{ "index.html" | relURL }}#picks">Featured products</a></li>
+<li><a href="{{ "about.html" | relURL }}">How we pick</a></li>
+</ul>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<section class="section section--brown">
+<div class="wrap">
+<div class="head-row">
+<div>
+<p class="eyebrow">Keep reading</p>
+<h2 class="grad-text">More from the blog.</h2>
+</div>
+<a class="head-link" href="{{ "blog.html" | relURL }}">All articles →</a>
+</div>
+<div class="posts">
+{{- range first 3 $others }}
+{{ partial "postcard.html" . }}
+{{- end }}
+</div>
+</div>
+</section>
+<section class="section section--tight">
+<div class="wrap">
+<div class="ctaband">
+<div>
+<p class="eyebrow">Ready when you are</p>
+<h2>Find your next favorite thing.</h2>
+</div>
+<a class="btn" href="{{ "index.html" | relURL }}#picks">Browse the picks</a>
+</div>
+</div>
+</section>
+</div>
+{{ end }}

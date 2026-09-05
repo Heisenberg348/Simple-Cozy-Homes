@@ -1,0 +1,154 @@
+{{ define "main" }}
+{{- $home := site.Data.home -}}
+<!-- Hero. Text lives in data/home.yml -->
+<section class="hero">
+<div class="wrap hero__inner">
+<div class="hero__panel">
+<h1>{{ $home.hero.title }}</h1>
+<p>{{ $home.hero.text }}</p>
+<p><a class="btn" href="{{ $home.hero.primary.url }}">{{ $home.hero.primary.label }}</a> <a class="btn btn--ghost" href="{{ $home.hero.secondary.url }}">{{ $home.hero.secondary.label }}</a></p>
+</div>
+</div>
+<div class="hero__media">
+<img alt="{{ $home.hero.imageAlt }}" src="{{ $home.hero.image }}"/>
+</div>
+</section>
+<!-- Product picks. Cards come from data/products.yml -->
+<section class="section section--brown section--glow" id="picks">
+<div class="wrap">
+<div class="head-row">
+<div class="section__head">
+<p class="eyebrow">{{ $home.picks.eyebrow }}</p>
+<h2 class="grad-text">{{ $home.picks.title }}</h2>
+<p>{{ $home.picks.text }}</p>
+</div>
+<a class="head-link" href="{{ $home.picks.link.url }}">{{ $home.picks.link.label }}</a>
+</div>
+<div class="pcards">
+{{- range site.Data.products.items }}
+<article class="pcard">
+<span class="pcard__badge">{{ .badge }}</span>
+<div class="pcard__media"><img alt="{{ .alt }}" src="{{ .image }}"/></div>
+<div class="pcard__body">
+<h3>{{ .title }}</h3>
+<p>{{ .text }}</p>
+<ul class="chips">{{ range .chips }}<li>{{ . }}</li>{{ end }}</ul>
+<div class="pcard__foot">
+<a class="btn btn--sm" href="{{ .url }}" rel="noopener">{{ $home.picks.buttonLabel }}</a>
+</div>
+</div>
+</article>
+{{- end }}
+</div>
+</div>
+</section>
+<!-- Four promises. data/promises.yml -->
+<section class="section section--tight">
+<div class="wrap">
+<div class="promises">
+{{- range site.Data.promises.items }}
+<div class="promise">
+<div aria-hidden="true" class="promise__icon">{{ .icon }}</div>
+<h3>{{ .title }}</h3>
+<p>{{ .text }}</p>
+</div>
+{{- end }}
+</div>
+</div>
+</section>
+<!-- Categories. data/categories.yml -->
+<section class="section">
+<div class="wrap">
+<div class="section__head">
+<h2>{{ $home.categories.title }}</h2>
+<p>{{ $home.categories.text }}</p>
+</div>
+<div class="grid grid--3">
+{{- range site.Data.categories.items }}
+<a class="card" href="{{ .url }}">
+<div class="card__media"><img alt="{{ .alt }}" loading="lazy" src="{{ .image }}"/></div>
+<div class="card__body">
+<h3>{{ .title }}</h3>
+<p>{{ .text }}</p>
+<span class="card__link">{{ .linkLabel }}</span>
+</div>
+</a>
+{{- end }}
+</div>
+</div>
+</section>
+<!-- Green band. data/stats.yml -->
+<section aria-label="How this site works" class="section section--green section--tight">
+<div class="wrap">
+<div class="stats">
+{{- range site.Data.stats.items }}
+<div>
+<div class="stats__num">{{ .num }}</div>
+<div class="stats__label">{{ .label }}</div>
+</div>
+{{- end }}
+</div>
+</div>
+</section>
+<!-- Questions and answers. data/homefaq.yml -->
+<section aria-labelledby="faq-heading" class="section">
+<div class="wrap">
+<div class="section__head">
+<p class="eyebrow">{{ $home.faq.eyebrow }}</p>
+<h2 id="faq-heading">{{ $home.faq.title }}</h2>
+<p>{{ $home.faq.text }}</p>
+</div>
+<div class="qa">
+{{- range $i, $item := site.Data.homefaq.items }}
+<details{{ if eq $i 0 }} open{{ end }}>
+<summary>{{ $item.q }}</summary>
+<div class="qa__a">
+<p>{{ $item.a | safeHTML }}</p>
+</div>
+</details>
+{{- end }}
+</div>
+<p style="margin-top:1.6rem"><a class="btn btn--ghost" href="{{ $home.faq.link.url }}">{{ $home.faq.link.label }}</a></p>
+</div>
+</section>
+<!-- Comparison table. data/compare.yml -->
+<section aria-labelledby="compare-heading" class="section section--brown">
+<div class="wrap">
+<div class="section__head">
+<p class="eyebrow">{{ $home.compare.eyebrow }}</p>
+<h2 id="compare-heading">{{ $home.compare.title }}</h2>
+<p>{{ $home.compare.text }}</p>
+</div>
+<div class="cmp">
+<table>
+<thead>
+<tr>
+{{- range site.Data.compare.head }}
+<th scope="col">{{ . }}</th>
+{{- end }}
+</tr>
+</thead>
+<tbody>
+{{- range site.Data.compare.rows }}
+<tr>
+<th scope="row">{{ .you }}</th>
+<td>{{ .start }}</td>
+<td>{{ .why }}</td>
+</tr>
+{{- end }}
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Closing call to action -->
+<section class="section section--tight">
+<div class="wrap">
+<div class="endcta">
+<h2>{{ $home.endcta.title }}</h2>
+<p>{{ $home.endcta.text }}</p>
+<p><a class="btn btn--ghost" href="{{ $home.endcta.link.url }}">{{ $home.endcta.link.label }}</a></p>
+</div>
+</div>
+</section>
+{{ end }}

@@ -1,0 +1,2 @@
+Copy every file from your old images folder into this folder.
+Keep the same file names. Delete this note afterwards.
