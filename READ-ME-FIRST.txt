@@ -1,0 +1,95 @@
+==========================================================================
+ SIMPLY COZY HOMES - HUGO VERSION
+==========================================================================
+
+WHERE THINGS LIVE
+
+  content/            the words on each page
+    _index.md         homepage settings (title and description for Google)
+    about.md          about page settings
+    faq.md            the FAQ page, written in markdown
+    contact.md        contact page
+    how-we-test.md    how we choose products
+    privacy.md        privacy policy
+    terms.md          terms
+    shipping-returns.md
+    blog/             one file per guide. Add a file, get a new guide.
+
+  data/               lists that build parts of the site
+    home.yml          every heading and paragraph on the homepage
+    products.yml      the six product cards
+    categories.yml    the room and routine cards
+    promises.yml      the four small boxes
+    stats.yml         the green band
+    homefaq.yml       the short questions on the homepage
+    compare.yml       the comparison table
+    blog.yml          wording on the guides page
+    ideas.yml         the "more guides in progress" list
+
+  layouts/            the page structure. Header and footer live here once.
+    partials/header.html   the top menu
+    partials/footer.html   the footer
+
+  static/             files copied straight to the site
+    assets/css        styles.css and tweaks.css, unchanged
+    assets/js         main.js, unchanged
+    images/           PUT YOUR IMAGE FILES IN HERE
+
+  hugo.toml           site name, menu, blog categories, footer links
+
+--------------------------------------------------------------------------
+ FIRST STEPS
+--------------------------------------------------------------------------
+
+1. Copy every file from your old "images" folder into static/images/.
+    Keep the file names the same.
+
+2. Put all of this in your GitHub repo, replacing the old files.
+    Delete the old .html files from the repo root. Keep nothing behind
+    except the new folders and files from this zip.
+
+3. In Netlify: Site configuration -> Build & deploy -> Build settings
+      Build command:      hugo --gc --minify
+      Publish directory:  public
+    The netlify.toml in this zip already sets both, so a normal deploy
+    should pick them up on its own.
+
+4. Deploy. Page addresses stay the same, for example /about.html and
+    /kitchen-tools-worth-buying.html, so nothing breaks in Google.
+
+--------------------------------------------------------------------------
+ ADDING A NEW GUIDE
+--------------------------------------------------------------------------
+
+Copy any file in content/blog/, rename it, and change the lines at the
+top. The file name becomes the web address:
+
+  content/blog/my-new-guide.md   ->   /my-new-guide.html
+
+The guides page card, the category button, the "keep reading" cards and
+the sitemap all update on their own.
+
+--------------------------------------------------------------------------
+ ADDING A CATEGORY
+--------------------------------------------------------------------------
+
+Open hugo.toml and copy one blogCategories block:
+
+  [[params.blogCategories]]
+    key = "outdoor"
+    label = "Outdoor"
+
+Then set  category: "outdoor"  at the top of any guide.
+
+--------------------------------------------------------------------------
+ PREVIEW ON YOUR OWN COMPUTER (OPTIONAL)
+--------------------------------------------------------------------------
+
+Install Hugo (extended), then in this folder run:
+
+  hugo server
+
+Open http://localhost:1313 in your browser.
+
+Note: the old editor.html tool is not part of this version, because the
+text now lives in the content and data files instead of in HTML pages.

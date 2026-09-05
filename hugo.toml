@@ -1,0 +1,124 @@
+# ==========================================================================
+#  Simply Cozy Homes - site settings
+#  Almost everything you would want to change is in this file or in /data.
+# ==========================================================================
+
+baseURL = "https://admirable-cucurucho-c82cd2.netlify.app/"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "Simply Cozy Homes"
+
+# Keeps web addresses looking like /about.html, exactly like the old site.
+uglyURLs = true
+enableRobotsTXT = false
+buildFuture = true
+
+[permalinks]
+  # Articles stay at the top level: /kitchen-tools-worth-buying.html
+  blog = "/:slug"
+
+[markup.goldmark.renderer]
+  # Lets you drop plain HTML into a markdown file when you need to.
+  unsafe = true
+
+[params]
+  siteName = "Simply Cozy Homes"
+  tagline = "Home decor & essentials"
+  email = "info@simplycozyhomes.com"
+  description = "Shop practical home essentials and warm, easy-to-live-with decor for kitchens, bedrooms, rentals and small spaces."
+  defaultImage = "images/hero.jpg"
+  footerBlurb = "Thoughtful home decor and useful everyday essentials for calmer, more comfortable spaces."
+  copyrightLine = "© 2026 Simply Cozy Homes. All rights reserved."
+  legalNote = "Product details and availability can change. Please review the current item information before ordering. Questions about an order? Contact info@simplycozyhomes.com."
+  authorName = "Simply Cozy Homes"
+  authorRole = "Editorial team"
+
+# ---- Top menu ------------------------------------------------------------
+[[params.nav]]
+  name = "Home"
+  url = "/index.html"
+  section = "home"
+[[params.nav]]
+  name = "Guides"
+  url = "/blog.html"
+  section = "blog"
+[[params.nav]]
+  name = "About Us"
+  url = "/about.html"
+  section = "page"
+[[params.nav]]
+  name = "FAQ"
+  url = "/faq.html"
+  section = "page"
+[[params.nav]]
+  name = "Contact"
+  url = "/contact.html"
+  section = "page"
+
+# ---- Blog category buttons ----------------------------------------------
+#  Add a category: copy one block, then use its key in a post front matter.
+[[params.blogCategories]]
+  key = "kitchen"
+  label = "Kitchen"
+[[params.blogCategories]]
+  key = "storage"
+  label = "Storage"
+[[params.blogCategories]]
+  key = "decor"
+  label = "Decor"
+[[params.blogCategories]]
+  key = "lighting"
+  label = "Lighting"
+[[params.blogCategories]]
+  key = "bedding"
+  label = "Bedding"
+[[params.blogCategories]]
+  key = "cleaning"
+  label = "Cleaning & Homecare"
+
+# ---- Footer columns ------------------------------------------------------
+[[params.footerColumns]]
+  title = "Quick Links"
+  [[params.footerColumns.links]]
+    name = "Home"
+    url = "/index.html"
+  [[params.footerColumns.links]]
+    name = "Guides"
+    url = "/blog.html"
+  [[params.footerColumns.links]]
+    name = "About Us"
+    url = "/about.html"
+  [[params.footerColumns.links]]
+    name = "Contact"
+    url = "/contact.html"
+[[params.footerColumns]]
+  title = "Explore"
+  [[params.footerColumns.links]]
+    name = "Kitchen Essentials"
+    url = "/index.html#picks"
+  [[params.footerColumns.links]]
+    name = "Storage & Organization"
+    url = "/index.html#picks"
+  [[params.footerColumns.links]]
+    name = "Home Decor"
+    url = "/index.html#picks"
+  [[params.footerColumns.links]]
+    name = "Lighting"
+    url = "/index.html#picks"
+[[params.footerColumns]]
+  title = "Help"
+  [[params.footerColumns.links]]
+    name = "FAQ"
+    url = "/faq.html"
+  [[params.footerColumns.links]]
+    name = "How we choose"
+    url = "/how-we-test.html"
+  [[params.footerColumns.links]]
+    name = "Shipping & Returns"
+    url = "/shipping-returns.html"
+  [[params.footerColumns.links]]
+    name = "Privacy policy"
+    url = "/privacy.html"
+  [[params.footerColumns.links]]
+    name = "Terms of use"
+    url = "/terms.html"
