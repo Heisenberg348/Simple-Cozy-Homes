@@ -1,0 +1,362 @@
+/* =========================================================================
+   TWEAKS.CSS  -  Simply Cozy Homes
+   -------------------------------------------------------------------------
+   Loaded on every page straight after styles.css, so anything in here
+   beats what is in styles.css.
+
+   Two jobs:
+     1. Brighter background colors (see below - easy to undo)
+     2. Styling for the question lists and author boxes
+   ========================================================================= */
+
+
+/* =========================================================================
+   1. BRIGHTER BACKGROUNDS
+   -------------------------------------------------------------------------
+   Your original colors are shown in the comments. Every one of these has
+   been lifted a step so the site feels lighter, while the cream text stays
+   easy to read.
+
+   WANT IT BRIGHTER STILL?  Nudge the numbers up.
+   WANT THE OLD LOOK BACK?  Delete this whole block.
+   ========================================================================= */
+:root {
+	--brown-deep:  #332822;  /* was #241C19 - main page background      */
+	--brown:       #3D2F28;  /* was #2B211D - alternating sections      */
+	--brown-2:     #47372E;  /* was #332721 - cards sitting on brown    */
+
+	--green-deep:  #375A4B;  /* was #2F4B3F - hero + stats bands        */
+	--green:       #406557;  /* was #35564A - green cards and boxes     */
+	--green-soft:  #4A7263;  /* was #3D6153 - panel over the hero photo */
+
+	--maroon:      #5B2C32;  /* was #4C2328 - deep red band             */
+
+	/* Divider lines lifted slightly so they still show up */
+	--line: rgba(246, 241, 234, 0.18);
+}
+
+
+/* =========================================================================
+   2. QUESTION AND ANSWER LISTS  (homepage + FAQ page)
+   ========================================================================= */
+.qa{border-top:1px solid var(--line);margin:0}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{cursor:pointer;padding:1.05rem 2.2rem 1.05rem 0;font-family:var(--font-display);font-weight:600;font-size:1.06rem;color:var(--ink);position:relative;list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";position:absolute;right:.2rem;top:50%;transform:translateY(-50%);font-size:1.5rem;line-height:1;color:var(--gold)}
+.qa details[open] summary::after{content:"\2013"}
+.qa summary:hover{color:var(--gold)}
+.qa .qa__a{padding:0 2.2rem 1.35rem 0;color:var(--ink-soft)}
+.qa .qa__a p{margin:0 0 .8rem}
+.qa .qa__a p:last-child{margin-bottom:0}
+
+
+/* =========================================================================
+   3. AUTHOR BOX  (bottom of an article)
+   ========================================================================= */
+.authorbox{display:flex;gap:1.1rem;align-items:flex-start;margin:2.8rem 0 0;padding:1.4rem 1.5rem;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--brown-2)}
+.authorbox__mark{flex:0 0 46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:var(--ink);font-family:var(--font-display);font-weight:600;font-size:.95rem}
+.authorbox strong{font-family:var(--font-display);font-size:1.05rem;color:var(--ink)}
+.authorbox p{margin:.35rem 0 0;font-size:.95rem;line-height:1.6;color:var(--ink-soft)}
+
+
+/* =========================================================================
+   4. COMPARISON TABLE  ("which pick is right for me")
+   ========================================================================= */
+.cmp{width:100%;overflow-x:auto;margin:0}
+.cmp table{width:100%;border-collapse:collapse;min-width:620px;font-size:.95rem}
+.cmp th,.cmp td{text-align:left;padding:.85rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp thead th{font-family:var(--font-display);font-weight:600;color:var(--gold);white-space:nowrap}
+.cmp tbody th{font-weight:600;color:var(--ink);white-space:nowrap}
+.cmp td{color:var(--ink-soft)}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
+
+
+/* =========================================================================
+   5. CLOSING CALL TO ACTION  (bottom of a page)
+   ========================================================================= */
+.endcta{margin:0;padding:2.1rem 1.8rem;border-radius:var(--radius-lg);background:var(--green-deep);border:1px solid var(--line)}
+.endcta h2{margin:0 0 .6rem}
+.endcta p{color:var(--ink-soft);max-width:52ch}
+.endcta .btn{margin-top:.4rem}
+
+
+/* =========================================================================
+   6. FIX: FADED HEADINGS ON PHONES
+   -------------------------------------------------------------------------
+   The problem: some headings use a class called "grad-text", which paints
+   a cream-to-gold gradient INSIDE the letters. To do that, the letters
+   themselves have to be made see-through first.
+
+   On desktop Chrome that works fine. On a lot of phone browsers the
+   gradient never gets painted - but the letters stay see-through. You end
+   up looking at invisible text on a dark brown background, which is
+   exactly the "faded into the background" effect you spotted.
+
+   The fix below turns those headings into plain cream text on phones and
+   tablets, where the gradient is a nice-to-have nobody misses. Desktop
+   keeps the gradient.
+
+   WANT PLAIN CREAM HEADINGS EVERYWHERE?  Delete the two @media lines
+   (the "@media (max-width: 900px) {" line and its closing "}").
+   ========================================================================= */
+@media (max-width: 900px) {
+	.grad-text {
+		background: none;
+		-webkit-text-fill-color: var(--ink);
+		color: var(--ink);
+	}
+}
+
+/* Belt and braces: any browser at any size that cannot clip a background
+   to the shape of the text gets plain cream headings instead of nothing. */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+	.grad-text {
+		background: none;
+		-webkit-text-fill-color: var(--ink);
+		color: var(--ink);
+	}
+}
+
+/* =========================================================================
+   7. EXTRA GRADIENTS AND ANIMATIONS
+   -------------------------------------------------------------------------
+   Adds soft moving color to the page background and to the individual
+   bands, plus gentle motion on cards, buttons and headings.
+
+   WANT THE PLAINER LOOK BACK?  Delete this whole block (section 7).
+   Phones and "reduce motion" settings automatically get the calm version.
+   ========================================================================= */
+
+/* --- 7.1 The page background: three slow-moving pools of color --------- */
+body { position: relative; background: var(--brown-deep); }
+body::before {
+	content: "";
+	position: fixed;
+	inset: -20vmax;
+	z-index: -1;
+	pointer-events: none;
+	background:
+		radial-gradient(48vmax 40vmax at 12% 8%,  rgba(208,122,80,0.20), transparent 62%),
+		radial-gradient(52vmax 42vmax at 88% 26%, rgba(64,101,87,0.30),  transparent 64%),
+		radial-gradient(46vmax 38vmax at 30% 88%, rgba(201,168,106,0.14), transparent 62%),
+		linear-gradient(170deg, #3A2C25 0%, var(--brown-deep) 46%, #2B211C 100%);
+	animation: bgDrift 34s ease-in-out infinite alternate;
+}
+@keyframes bgDrift {
+	0%   { transform: translate3d(0, 0, 0) scale(1); }
+	50%  { transform: translate3d(2.5%, -2%, 0) scale(1.06); }
+	100% { transform: translate3d(-2%, 2.5%, 0) scale(1.03); }
+}
+
+/* --- 7.2 Depth inside the brown and green bands ------------------------ */
+.section--brown {
+	position: relative;
+	background-image:
+		radial-gradient(60% 90% at 8% 0%,   rgba(208,122,80,0.13), transparent 68%),
+		radial-gradient(55% 85% at 96% 100%, rgba(64,101,87,0.30),  transparent 70%),
+		linear-gradient(165deg, #43332B 0%, var(--brown) 52%, #2F241F 100%);
+}
+.section--green {
+	position: relative;
+	overflow: hidden;
+	background-image:
+		radial-gradient(70% 120% at 12% 0%,  rgba(201,168,106,0.18), transparent 66%),
+		radial-gradient(70% 130% at 92% 100%, rgba(208,122,80,0.20), transparent 68%),
+		linear-gradient(120deg, #3E6656 0%, var(--green-deep) 55%, #2F4B41 100%);
+	background-size: 160% 160%, 160% 160%, 200% 200%;
+	animation: bandShift 26s ease-in-out infinite alternate;
+}
+@keyframes bandShift {
+	0%   { background-position: 0% 50%, 100% 50%, 0% 50%; }
+	100% { background-position: 30% 50%, 70% 50%, 100% 50%; }
+}
+
+/* a slow light sweep across the green band */
+.section--green::after {
+	content: "";
+	position: absolute; top: 0; bottom: 0; left: -35%; width: 30%;
+	pointer-events: none;
+	background: linear-gradient(100deg, transparent, rgba(255,255,255,0.10), transparent);
+	transform: skewX(-14deg);
+	animation: bandSheen 9s ease-in-out 2s infinite;
+}
+@keyframes bandSheen {
+	0%   { left: -35%; opacity: 0; }
+	12%  { opacity: 1; }
+	55%  { left: 115%; opacity: 0; }
+	100% { left: 115%; opacity: 0; }
+}
+.section--green > .wrap { position: relative; z-index: 1; }
+
+/* --- 7.3 Hairline gradient dividers between bands ---------------------- */
+.section--brown::before,
+.section--green::before {
+	content: "";
+	position: absolute; left: 0; right: 0; top: 0; height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(201,168,106,0.55), rgba(208,122,80,0.45), transparent);
+}
+
+/* --- 7.4 The glow band behind the featured products keeps moving ------- */
+.section--glow::before {
+	background:
+		radial-gradient(720px 340px at 10% -10%, rgba(208,122,80,0.20), transparent 66%),
+		radial-gradient(640px 320px at 92% 110%, rgba(64,101,87,0.58),  transparent 70%);
+	animation: glowFloat 22s ease-in-out infinite alternate;
+}
+@keyframes glowFloat {
+	0%   { transform: translate3d(0, 0, 0); }
+	100% { transform: translate3d(-3%, 3%, 0); }
+}
+
+/* --- 7.5 Hero panel and headings --------------------------------------- */
+.hero__panel {
+	background-image: linear-gradient(150deg, rgba(255,255,255,0.14), rgba(255,255,255,0) 58%);
+}
+.hero__panel h1 {
+	background: linear-gradient(96deg, #FFFFFF 0%, #F6F1EA 38%, #EBCFAB 100%);
+	background-size: 220% 100%;
+	-webkit-background-clip: text; background-clip: text;
+	-webkit-text-fill-color: transparent; color: transparent;
+	animation: textSlide 14s ease-in-out infinite alternate;
+}
+.grad-text {
+	background-size: 220% 100%;
+	animation: textSlide 12s ease-in-out infinite alternate;
+}
+@keyframes textSlide {
+	0%   { background-position: 0% 50%; }
+	100% { background-position: 100% 50%; }
+}
+
+/* --- 7.6 Product cards: gradient face and a soft sheen on hover -------- */
+.pcard, .card {
+	position: relative;
+	background-image: linear-gradient(165deg, rgba(255,255,255,0.09), rgba(255,255,255,0) 55%);
+}
+.pcard::after, .card::after {
+	content: "";
+	position: absolute; inset: 0;
+	border-radius: inherit;
+	pointer-events: none;
+	opacity: 0;
+	background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.16) 50%, transparent 70%);
+	background-size: 240% 100%;
+	background-position: 100% 0;
+	transition: opacity 0.3s ease, background-position 0.75s ease;
+}
+.pcard:hover::after, .card:hover::after {
+	opacity: 1;
+	background-position: 0 0;
+}
+.pcard__badge {
+	background-image: linear-gradient(120deg, rgba(201,168,106,0.30), rgba(208,122,80,0.30));
+}
+
+/* one button per card now, so let it sit on its own line and fill the card */
+.pcard__foot { justify-content: flex-start; }
+.pcard__foot .btn--sm { width: 100%; text-align: center; }
+
+/* --- 7.7 Promises, stats and category cards ---------------------------- */
+.promise {
+	background-image: linear-gradient(160deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 62%);
+}
+.promise::before {
+	content: "";
+	position: absolute; left: 0; top: 0; height: 2px; width: 100%;
+	background: linear-gradient(90deg, var(--gold), var(--terracotta));
+	opacity: 0;
+	transition: opacity 0.28s ease;
+}
+.promise { position: relative; overflow: hidden; }
+.promise:hover::before { opacity: 1; }
+
+.stats__num {
+	background: linear-gradient(92deg, #FFFFFF 0%, #F3DCBE 48%, #E7C79B 100%);
+	background-size: 220% 100%;
+	-webkit-background-clip: text; background-clip: text;
+	-webkit-text-fill-color: transparent; color: transparent;
+	animation: textSlide 10s ease-in-out infinite alternate;
+}
+.stats > div { transition: transform 0.3s ease; }
+.stats > div:hover { transform: translateY(-4px); }
+
+.card__media, .pcard__media { position: relative; }
+.card__media::after, .pcard__media::after {
+	content: "";
+	position: absolute; inset: 0; pointer-events: none;
+	background: linear-gradient(180deg, rgba(36,28,25,0) 45%, rgba(36,28,25,0.55) 100%);
+}
+
+/* --- 7.8 Blog category buttons ----------------------------------------- */
+.filterbar {
+	background-image:
+		linear-gradient(100deg, rgba(208,122,80,0.16), rgba(64,101,87,0.22) 55%, rgba(201,168,106,0.14));
+}
+.chipnav button { transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, background 0.25s ease; }
+.chipnav button:hover { background: rgba(201,168,106,0.14); }
+.chipnav button.is-on {
+	background: linear-gradient(135deg, var(--gold), var(--terracotta));
+	background-size: 180% 100%;
+	animation: textSlide 8s ease-in-out infinite alternate;
+	box-shadow: 0 8px 20px rgba(208,122,80,0.28);
+}
+
+/* --- 7.9 Closing call to action: living gradient edge ------------------ */
+.endcta {
+	position: relative;
+	overflow: hidden;
+	background-image:
+		radial-gradient(80% 140% at 6% 0%,  rgba(201,168,106,0.20), transparent 64%),
+		radial-gradient(80% 140% at 98% 100%, rgba(208,122,80,0.24), transparent 66%),
+		linear-gradient(130deg, #43705E 0%, var(--green-deep) 60%, #33513F 100%);
+	background-size: 170% 170%, 170% 170%, 200% 200%;
+	animation: bandShift 24s ease-in-out infinite alternate;
+}
+.endcta::before {
+	content: "";
+	position: absolute; left: 0; right: 0; top: 0; height: 2px;
+	background: linear-gradient(90deg, var(--gold), var(--terracotta), var(--gold));
+	background-size: 200% 100%;
+	animation: textSlide 7s ease-in-out infinite alternate;
+}
+
+/* --- 7.10 Footer gets the same soft wash ------------------------------- */
+.site-footer {
+	position: relative;
+	background-image:
+		radial-gradient(60% 120% at 15% 0%, rgba(64,101,87,0.28), transparent 66%),
+		linear-gradient(180deg, #2B211C 0%, #201814 100%);
+}
+.site-footer::before {
+	content: "";
+	position: absolute; left: 0; right: 0; top: 0; height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(201,168,106,0.5), transparent);
+}
+
+/* --- 7.11 Calm version for phones and "reduce motion" ------------------ */
+@media (max-width: 900px) {
+	body::before,
+	.section--green,
+	.endcta { animation: none; }
+	.section--green::after { display: none; }
+	.hero__panel h1 {
+		background: none;
+		-webkit-text-fill-color: var(--ink);
+		color: var(--ink);
+		animation: none;
+	}
+	.grad-text, .stats__num { animation: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+	body::before,
+	.section--green,
+	.section--green::after,
+	.section--glow::before,
+	.grad-text,
+	.stats__num,
+	.hero__panel h1,
+	.chipnav button.is-on,
+	.endcta,
+	.endcta::before { animation: none !important; }
+}
